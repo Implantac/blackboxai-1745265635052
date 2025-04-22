@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Grid -->
+    <path d="M100 100h600v400h-600z" stroke="#FF9800" stroke-opacity="0.2" stroke-width="2" stroke-dasharray="4 4"/>
+    <!-- Bar Chart -->
+    <rect x="150" y="350" width="80" height="100" fill="#1a2234"/>
+    <rect x="250" y="250" width="80" height="200" fill="#1a2234"/>
+    <rect x="350" y="200" width="80" height="250" fill="#FF9800"/>
+    <rect x="450" y="300" width="80" height="150" fill="#1a2234"/>
+    <rect x="550" y="150" width="80" height="300" fill="#FF9800"/>
+    <!-- Line Chart -->
+    <path d="M150 200l100-50 100 100 100-80 100 30" stroke="#FF9800" stroke-width="4" fill="none"/>
+    <!-- Data Points -->
+    <circle cx="150" cy="200" r="8" fill="#FF9800"/>
+    <circle cx="250" cy="150" r="8" fill="#FF9800"/>
+    <circle cx="350" cy="250" r="8" fill="#FF9800"/>
+    <circle cx="450" cy="170" r="8" fill="#FF9800"/>
+    <circle cx="550" cy="200" r="8" fill="#FF9800"/>
+</svg>
