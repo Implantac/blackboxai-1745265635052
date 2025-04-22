@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Store Front -->
+    <rect x="100" y="50" width="600" height="300" fill="#1a2234"/>
+    <!-- Store Window -->
+    <rect x="150" y="100" width="200" height="150" fill="#ff9800" fill-opacity="0.2"/>
+    <!-- Door -->
+    <rect x="400" y="150" width="80" height="200" fill="#2a3245"/>
+    <!-- Signage -->
+    <rect x="150" y="75" width="500" height="40" fill="#ff9800"/>
+    <!-- Shopping Cart Icon -->
+    <circle cx="650" cy="150" r="30" fill="#ff9800"/>
+    <path d="M630 150h40m-20-20v40" stroke="#ffffff" stroke-width="4"/>
+    <!-- Products on Display -->
+    <rect x="175" y="150" width="30" height="30" fill="#ffffff"/>
+    <rect x="225" y="150" width="30" height="30" fill="#ffffff"/>
+    <rect x="275" y="150" width="30" height="30" fill="#ffffff"/>
+    <!-- Ground -->
+    <rect x="0" y="350" width="800" height="50" fill="#2a3245"/>
+</svg>
