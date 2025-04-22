@@ -1,114 +1,91 @@
-// Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.querySelector('.md\\:hidden button');
-    const mobileMenu = document.createElement('div');
-    mobileMenu.className = 'mobile-menu hidden fixed top-16 left-0 w-full bg-white shadow-lg md:hidden';
-    mobileMenu.innerHTML = `
-        <div class="px-4 py-2">
-            <a href="#features" class="block py-3 text-gray-600 hover:text-blue-600">Recursos</a>
-            <a href="#benefits" class="block py-3 text-gray-600 hover:text-blue-600">Benefícios</a>
-            <a href="#contact" class="block py-3 text-gray-600 hover:text-blue-600">Contato</a>
-            <a href="#" class="block py-3 mt-2 bg-blue-600 text-white px-4 rounded-lg text-center hover:bg-blue-700 transition duration-300">Começar Agora</a>
-        </div>
-    `;
-    document.body.appendChild(mobileMenu);
+// Function to render logo in a specific container
+function renderLogoInContainer(containerId, config) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-    });
+    // Clear existing content
+    container.innerHTML = '';
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.md\\:hidden button') && !event.target.closest('.mobile-menu')) {
-            mobileMenu.classList.add('hidden');
-        }
-    });
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        
-        if (href !== '#') {
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                const mobileMenu = document.querySelector('.mobile-menu');
-                if (mobileMenu) {
-                    mobileMenu.classList.add('hidden');
-                }
-            }
-        }
-    });
-});
-
-// Form submission handling
-const contactForm = document.querySelector('#contact form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form inputs
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
-        
-        // Basic validation
-        if (!name || !email || !message) {
-            alert('Por favor, preencha todos os campos');
-            return;
-        }
-        
-        // Show success message (in production, this would send data to a server)
-        alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
-        this.reset();
-    });
+    if (config.type === 'image') {
+        // Create image element
+        const img = document.createElement('img');
+        img.src = config.image.src;
+        img.alt = config.image.alt;
+        img.width = config.image.width;
+        img.height = config.image.height;
+        img.className = 'mr-2';
+        container.appendChild(img);
+    } else {
+        // Use Font Awesome icon
+        const icon = document.createElement('i');
+        icon.className = `${config.icon.className} text-3xl mr-2 ${config.icon.color}`;
+        container.appendChild(icon);
+    }
 }
 
-// Add scroll animation for elements
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Function to render all logos
+function renderLogos() {
+    if (!window.siteConfig) return;
+    // Render main navigation logo
+    renderLogoInContainer('logo-container', window.siteConfig.logo);
+    // Render footer logo
+    renderLogoInContainer('footer-logo-container', window.siteConfig.logo);
+}
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-up');
-            observer.unobserve(entry.target);
+// Function to update company information
+function updateCompanyInfo() {
+    if (!window.siteConfig) return;
+    // Update company name in all locations
+    document.querySelectorAll('.company-name').forEach(element => {
+        element.textContent = window.siteConfig.company.name;
+    });
+
+    // Update CNPJ
+    const cnpjElement = document.getElementById('company-cnpj');
+    if (cnpjElement) {
+        cnpjElement.textContent = `CNPJ: ${window.siteConfig.company.cnpj}`;
+    }
+
+    // Update slogan
+    const sloganElement = document.getElementById('company-slogan');
+    if (sloganElement) {
+        sloganElement.textContent = window.siteConfig.company.slogan;
+    }
+}
+
+// Function to change logo type
+window.changeLogo = function(type) {
+    if (!window.siteConfig) return;
+    window.siteConfig.logo.type = type;
+    renderLogos();
+    // Save preference to localStorage
+    localStorage.setItem('logoType', type);
+}
+
+// Function to toggle admin controls
+function toggleAdminControls(show) {
+    document.body.classList.toggle('admin-mode', show);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Check for saved logo preference
+    const savedLogoType = localStorage.getItem('logoType');
+    if (savedLogoType && window.siteConfig) {
+        window.siteConfig.logo.type = savedLogoType;
+    }
+
+    // Set up keyboard shortcut for admin controls
+    document.addEventListener('keydown', function(e) {
+        // Alt + A to toggle admin mode
+        if (e.altKey && e.key.toLowerCase() === 'a') {
+            toggleAdminControls(!document.body.classList.contains('admin-mode'));
         }
     });
-}, observerOptions);
 
-// Observe elements that should animate on scroll
-document.querySelectorAll('.grid > div').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    observer.observe(el);
+    // Initialize if config is already loaded
+    if (window.siteConfig) {
+        renderLogos();
+        updateCompanyInfo();
+    }
 });
-
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    .fade-in-up {
-        animation: fadeInUp 0.6s ease forwards;
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
