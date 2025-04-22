@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Warehouse Building -->
+    <path d="M100 500h600v-300l-300-150-300 150z" fill="#FF9800" fill-opacity="0.2" stroke="#FF9800" stroke-width="4"/>
+    <!-- Boxes -->
+    <rect x="200" y="300" width="80" height="80" fill="#1a2234"/>
+    <rect x="300" y="300" width="80" height="80" fill="#1a2234"/>
+    <rect x="400" y="300" width="80" height="80" fill="#1a2234"/>
+    <rect x="250" y="200" width="80" height="80" fill="#1a2234"/>
+    <rect x="350" y="200" width="80" height="80" fill="#1a2234"/>
+    <!-- Forklift -->
+    <path d="M600 400h100v100h-100z" fill="#FF9800"/>
+    <circle cx="620" cy="500" r="20" fill="#1a2234"/>
+    <circle cx="680" cy="500" r="20" fill="#1a2234"/>
+</svg>
