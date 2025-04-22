@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Assembly Line -->
+    <path d="M100 300h600" stroke="#FF9800" stroke-width="8"/>
+    <!-- Production Items -->
+    <rect x="150" y="250" width="60" height="60" fill="#1a2234"/>
+    <rect x="350" y="250" width="60" height="60" fill="#1a2234"/>
+    <rect x="550" y="250" width="60" height="60" fill="#1a2234"/>
+    <!-- Machinery -->
+    <path d="M200 200v200m100-200v200m100-200v200" stroke="#FF9800" stroke-opacity="0.2" stroke-width="4"/>
+    <!-- Gears -->
+    <circle cx="250" cy="150" r="30" stroke="#FF9800" stroke-width="4" fill="none"/>
+    <circle cx="450" cy="150" r="30" stroke="#FF9800" stroke-width="4" fill="none"/>
+    <path d="M235 150l30 0m-15-15v30" stroke="#FF9800" stroke-width="4"/>
+    <path d="M435 150l30 0m-15-15v30" stroke="#FF9800" stroke-width="4"/>
+</svg>
