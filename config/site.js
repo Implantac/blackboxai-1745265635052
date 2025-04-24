@@ -1,5 +1,19 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     window.siteConfig = {
+        // API Configuration
+        api: {
+            baseUrl: window.location.hostname === 'localhost' 
+                ? 'http://localhost:5000/api'
+                : '/api',
+            endpoints: {
+                auth: '/auth',
+                usuarios: '/usuarios',
+                clientes: '/clientes',
+                estoque: '/estoque',
+                vendas: '/vendas',
+                financeiro: '/financeiro'
+            }
+        },
         // Logo configuration
         logo: {
             type: 'image', // 'image' or 'icon'
