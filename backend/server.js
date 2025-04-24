@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Configuração do ambiente
 dotenv.config();
@@ -10,21 +11,43 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
-// Configuração básica das rotas
-app.get('/', (req, res) => {
+// Servir arquivos estáticos
+app.use(express.static(path.join(__dirname, '../')));
+
+// Configuração básica das rotas e API
+app.get('/api', (req, res) => {
     res.json({ message: 'API da USE SISTEMAS funcionando!' });
 });
 
 // Rotas principais
-app.use('/api/auth', require('./routes/auth.routes'));
-app.use('/api/usuarios', require('./routes/usuarios.routes'));
-app.use('/api/clientes', require('./routes/clientes.routes'));
-app.use('/api/estoque', require('./routes/estoque.routes'));
-app.use('/api/vendas', require('./routes/vendas.routes'));
-app.use('/api/financeiro', require('./routes/financeiro.routes'));
+app.get('/api', (req, res) => {
+    res.json({ 
+        message: 'API da USE SISTEMAS funcionando!',
+        status: 'online',
+        timestamp: new Date().toISOString()
+    });
+});
+
+// Importa rota de gravações
+const recordingsRoutes = require('./routes/recordings.routes');
+app.use('/api/recordings', recordingsRoutes);
+
+// Rota para todas as requisições não-API para suportar HTML5 History mode
+app.get('*', (req, res, next) => {
+    // Se a requisição começar com /api, passa para o próximo middleware
+    if (req.path.startsWith('/api')) {
+        return next();
+    }
+    // Caso contrário, envia o index.html
+    res.sendFile(path.join(__dirname, '../index.html'));
+});
 
 // Middleware de tratamento de erros
 app.use((err, req, res, next) => {
@@ -64,20 +87,13 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Conexão com o banco de dados e inicialização do servidor
-const PORT = process.env.PORT || 5000;
+// Inicialização do servidor
+const PORT = process.env.PORT || 8000;
 
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-        console.log('Conectado ao MongoDB');
-        app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
-        });
-    })
-    .catch((err) => {
-        console.error('Erro ao conectar ao MongoDB:', err);
-        process.exit(1);
-    });
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Acesse http://localhost:${PORT} no navegador`);
+});
 
 // Tratamento de erros não capturados
 process.on('unhandledRejection', (err) => {
