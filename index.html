@@ -1,107 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>USE SISTEMAS - Sistema Moderno de Gestão Empresarial</title>
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/comparison.css">
-    
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/comparison.css" />
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Config -->
-    [Previous Tailwind config remains the same]
 </head>
-<body class="bg-gray-50">
-    [Previous navigation and hero sections remain the same]
-
-    <!-- Success Stories Section -->
-    [Previous success stories section remains the same]
-
-    <!-- Custom Price Calculator -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-                    Calcule seu Preço
-                </h2>
-                <p class="text-xl text-gray-600">
-                    Personalize seu plano de acordo com suas necessidades
-                </p>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Sidebar and Navigation -->
+    <div class="flex flex-1">
+        <aside class="w-64 bg-white shadow-md flex flex-col">
+            <div class="flex items-center px-6 py-4">
+                <img src="images/logo.svg" alt="USE SISTEMAS" class="h-10 w-auto" />
+                <span class="ml-3 text-xl font-bold text-orange-500">USE SISTEMAS</span>
             </div>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="mb-8">
-                        <label class="block text-gray-700 mb-2">Número de Usuários</label>
-                        <input type="range" id="user-count" min="5" max="100" step="5" 
-                               class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                               style="background: linear-gradient(to right, #ff9800 0%, #e0e0e0 0%)">
-                        <div class="text-center mt-2">
-                            <span id="user-count-display">5</span> usuários
-                        </div>
-                    </div>
-                    <div class="mb-8">
-                        <label class="block text-gray-700 mb-2">Módulos</label>
-                        <div class="space-y-2">
-                            <label class="flex items-center p-3 rounded-lg hover:bg-accent-light transition-colors cursor-pointer">
-                                <input type="checkbox" class="module-checkbox mr-2" value="estoque">
-                                <span class="flex-1">Gestão de Estoque</span>
-                                <span class="text-sm text-gray-500">+ R$ 100/mês</span>
-                            </label>
-                            <label class="flex items-center p-3 rounded-lg hover:bg-accent-light transition-colors cursor-pointer">
-                                <input type="checkbox" class="module-checkbox mr-2" value="financeiro">
-                                <span class="flex-1">Gestão Financeira</span>
-                                <span class="text-sm text-gray-500">+ R$ 100/mês</span>
-                            </label>
-                            <label class="flex items-center p-3 rounded-lg hover:bg-accent-light transition-colors cursor-pointer">
-                                <input type="checkbox" class="module-checkbox mr-2" value="producao">
-                                <span class="flex-1">Gestão da Produção</span>
-                                <span class="text-sm text-gray-500">+ R$ 100/mês</span>
-                            </label>
-                            <label class="flex items-center p-3 rounded-lg hover:bg-accent-light transition-colors cursor-pointer">
-                                <input type="checkbox" class="module-checkbox mr-2" value="bi">
-                                <span class="flex-1">Business Intelligence</span>
-                                <span class="text-sm text-gray-500">+ R$ 100/mês</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary mb-4">
-                            Valor Estimado: <span id="calculated-price">R$ 199,00</span>/mês
-                        </div>
-                        <div id="plan-recommendation" class="text-accent mb-6 hidden"></div>
-                        <button class="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-dark transition duration-300">
-                            Falar com Consultor
-                        </button>
+            <nav class="flex-1 px-4 space-y-2">
+                <a href="index.html" class="block px-4 py-2 rounded hover:bg-orange-100 text-gray-700 font-semibold">Início</a>
+                <a href="video.html" class="block px-4 py-2 rounded hover:bg-orange-100 text-gray-700 font-semibold flex items-center">
+                    <i class="fas fa-video mr-2"></i> Gravar Vídeo
+                </a>
+                <a href="recordings.html" class="block px-4 py-2 rounded hover:bg-orange-100 text-gray-700 font-semibold flex items-center">
+                    <i class="fas fa-folder-open mr-2"></i> Gravações
+                </a>
+                <!-- Add other navigation links as needed -->
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8 overflow-auto">
+            <!-- Hero Section -->
+            <section class="mb-12">
+                <h1 class="text-4xl font-extrabold text-orange-500 mb-4">Sistema Moderno de Gestão Empresarial</h1>
+                <p class="text-lg text-gray-700 max-w-3xl">
+                    O USE SISTEMAS oferece soluções completas para gestão de estoque, vendas, financeiro e muito mais.
+                </p>
+            </section>
+
+            <!-- Success Stories Section -->
+            <section class="mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+                    <img src="images/success/logistics.svg" alt="Logística" class="h-20 mb-4" />
+                    <h3 class="text-xl font-semibold mb-2">Logística Eficiente</h3>
+                    <p class="text-gray-600 text-center">Otimize sua cadeia de suprimentos com nosso sistema integrado.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+                    <img src="images/success/retail.svg" alt="Varejo" class="h-20 mb-4" />
+                    <h3 class="text-xl font-semibold mb-2">Varejo Moderno</h3>
+                    <p class="text-gray-600 text-center">Gerencie suas vendas e estoque com facilidade e eficiência.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+                    <img src="images/success/manufacturing.svg" alt="Manufatura" class="h-20 mb-4" />
+                    <h3 class="text-xl font-semibold mb-2">Manufatura Ágil</h3>
+                    <p class="text-gray-600 text-center">Controle a produção e aumente a produtividade da sua fábrica.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+                    <img src="images/success/logistics.svg" alt="Logística" class="h-20 mb-4" />
+                    <h3 class="text-xl font-semibold mb-2">Análise Avançada</h3>
+                    <p class="text-gray-600 text-center">Tome decisões estratégicas com base em dados precisos.</p>
+                </div>
+            </section>
+
+            <!-- Custom Price Calculator -->
+            <section class="py-20 bg-gray-50 rounded-lg shadow p-8 max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-orange-500 mb-4">Calcule seu Preço</h2>
+                    <p class="text-xl text-gray-600">Personalize seu plano de acordo com suas necessidades</p>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Número de Usuários</label>
+                    <input
+                        type="range"
+                        id="user-count"
+                        min="5"
+                        max="100"
+                        step="5"
+                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                        style="background: linear-gradient(to right, #ff9800 0%, #e0e0e0 0%)"
+                    />
+                    <div class="text-center mt-2">
+                        <span id="user-count-display">5</span> usuários
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="mt-8">
+                    <label class="block text-gray-700 mb-2">Módulos</label>
+                    <div class="space-y-2">
+                        <label
+                            class="flex items-center p-3 rounded-lg hover:bg-orange-100 transition-colors cursor-pointer"
+                        >
+                            <input type="checkbox" class="module-checkbox mr-2" value="estoque" />
+                            <span class="flex-1">Gestão de Estoque</span>
+                            <span class="text-sm text-gray-500">+ R$ 100/mês</span>
+                        </label>
+                        <label
+                            class="flex items-center p-3 rounded-lg hover:bg-orange-100 transition-colors cursor-pointer"
+                        >
+                            <input type="checkbox" class="module-checkbox mr-2" value="financeiro" />
+                            <span class="flex-1">Gestão Financeira</span>
+                            <span class="text-sm text-gray-500">+ R$ 100/mês</span>
+                        </label>
+                        <label
+                            class="flex items-center p-3 rounded-lg hover:bg-orange-100 transition-colors cursor-pointer"
+                        >
+                            <input type="checkbox" class="module-checkbox mr-2" value="producao" />
+                            <span class="flex-1">Gestão da Produção</span>
+                            <span class="text-sm text-gray-500">+ R$ 100/mês</span>
+                        </label>
+                        <label
+                            class="flex items-center p-3 rounded-lg hover:bg-orange-100 transition-colors cursor-pointer"
+                        >
+                            <input type="checkbox" class="module-checkbox mr-2" value="bi" />
+                            <span class="flex-1">Business Intelligence</span>
+                            <span class="text-sm text-gray-500">+ R$ 100/mês</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <div class="text-2xl font-bold text-orange-500 mb-4">
+                        Valor Estimado: <span id="calculated-price">R$ 199,00</span>/mês
+                    </div>
+                    <div id="plan-recommendation" class="text-accent mb-6 hidden"></div>
+                    <button
+                        class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300"
+                    >
+                        Falar com Consultor
+                    </button>
+                </div>
+            </section>
 
-    [Previous sections remain the same]
+            <!-- Footer -->
+            <footer class="bg-white mt-16 py-8 shadow-inner">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-600 text-sm">&copy; 2024 USE SISTEMAS. Todos os direitos reservados.</p>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-600 hover:text-orange-500" aria-label="Facebook"
+                            ><i class="fab fa-facebook-f"></i
+                        ></a>
+                        <a href="#" class="text-gray-600 hover:text-orange-500" aria-label="Twitter"
+                            ><i class="fab fa-twitter"></i
+                        ></a>
+                        <a href="#" class="text-gray-600 hover:text-orange-500" aria-label="LinkedIn"
+                            ><i class="fab fa-linkedin-in"></i
+                        ></a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
 
     <!-- Site Configuration -->
     <script src="config/site.js"></script>
-    
+    <!-- API Configuration -->
+    <script src="js/api.js"></script>
     <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/features.js"></script>
     <script src="js/comparison.js"></script>
     <script src="js/metrics.js"></script>
     <script src="js/whatsapp.js"></script>
+
+    <!-- Connection Status -->
+    <div id="connection-status" class="fixed bottom-4 right-4 hidden z-50">
+        <div class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg">
+            <span class="mr-2"><i class="fas fa-check-circle"></i></span>
+            Conectado ao servidor
+        </div>
+    </div>
+    <div id="connection-error" class="fixed bottom-4 right-4 hidden z-50">
+        <div class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg">
+            <span class="mr-2"><i class="fas fa-exclamation-circle"></i></span>
+            Erro de conexão com o servidor
+        </div>
+    </div>
 
     <!-- WhatsApp Button -->
     <a href="#" class="whatsapp-button" aria-label="Contato via WhatsApp">
